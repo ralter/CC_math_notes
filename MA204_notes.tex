@@ -1,0 +1,462 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsmath, amssymb}
+\usepackage[left=25mm, right=25mm, top=20mm, bottom=20mm]{geometry}
+\usepackage{esint}
+
+\pdfsuppresswarningpagegroup=1
+\title{MA204 Calc 3 Block 5 2022}
+\author{Reuben Alter}
+\date{}
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+
+\newpage
+
+\begin{section}{Day 1 - Sequences}
+\textbf{Theorem 1:} If $\lim\limits_{x\to\infty}f(x)$, then the sequence as $a(n)=f(n)$ converges to the same
+limit. 
+\begin{equation}
+	\lim\limits_{n\to\infty}a_{n}=\lim\limits_{x\to\infty}f(x)
+\end{equation}
+\textbf{Theorem 5:} if $a_{n}$ converges, it is bounded. vice versa is not necessarily
+true
+\textbf{Theorem 6}: Bounded monotonic rule. %Write down
+\textbf{L\'hospital rule}: %Write it down\\
+\textbf{Known}: for $a_{n}=(1+\frac{1}{n})^{n}$ convergence is $\lim\limits_{n\to\infty}(1+\frac{1}{n})^{n}=e^{a}$\\
+
+	\textbf{Definition - Sequence:} Ordered collection of numbers running on a function f. \\
+	\begin{subsection}{Standard sequences}
+	\begin{equation} \label{Example Sequence}
+		a_{n}=\frac{(-1)^{n}(n+1)}{n^{2}+2} ~,~ n \geq -1
+	\end{equation}
+	Starts at n = -1
+	
+	\end{subsection}
+	\begin{subsection}{Recursive Sequences}
+	\textbf{Sequences that call on the previous entry of the function}
+	\begin{equation} \label{Example Recursive Sequence}
+		a_{0}=54,~a_{n+1}=\frac{1}{3}a_{n}~,~n\geq 0
+	\end{equation}
+	
+	\end{subsection}
+	Something converges if it approaches a real number.\\
+	Something diverges if it doesn't approach a number or a approaches $\infty$
+	\begin{equation} \label{Approaching e}
+		\lim\limits_{n\to\infty}(1+\frac{1}{n})^{n}=e
+	\end{equation}
+\textbf{Geometric Sequence}: a sequence where $a_{n}=cr^{n}$ where c and r are nonzero constants.
+\begin{itemize}
+\item{r<1, converge to 0}
+\item{r=1, converge to 1}
+\item{r>1, diverge to $\infty$}
+\item{r=-1, diverge to 1 and -1}
+\item{r<-1, diverges oscillating between $+\infty~-\infty$}
+\end{itemize}
+$a_{n}=\sin(n) \mbox{or} =cos(n)$ diverge by oscillation. Some coefficients change that.
+\textbf{definition - Bounded:} A sequence that has an upper or a lower bound.\\
+\textbf{definition - Monotonic:} A sequence that is always increasing or decreasing\\
+If a function is \textbf{bounded} and \textbf{monotonic}, the function is convergent
+
+\end{section}
+\begin{section}{Day 2 - Series}
+\textbf{Definition:} The sum of all entries of a sequence. 
+\begin{equation} \label{}
+a_1+a_2+a_3+\dots+a_{n}=\sum_{n=1}^{\infty}a_{n}
+\end{equation}
+\begin{equation} 
+\lim\limits_{n\to\infty}a_{n}=0 \mbox{in order for there to be a convergence of the
+series}
+\end{equation}
+It doesn't make it true, but it can't not be true.
+
+\begin{subsection}{Telescoping Series}
+A series in which the interior terms cancel. Can be helpful to simplify partial sums.\\
+\end{subsection}
+%Integral test
+%divergence test
+
+\end{section}
+\begin{section}{Day 3 - More series tests}
+\textbf{Theorem 4 - Direct comparison test:}
+Assume there exists $M>0$ such that $0\leq a_{n} \leq b_{n} \mbox{for} 
+n \geq M$.\\
+i). if $\sum_{n=1}^{\infty}b_{n}$ converges, then  $\sum_{n=1}^{\infty}a_{n}$
+also converges.\\
+ii). if $\sum_{n=1}^{\infty}a_{n}$ diverges, then  $\sum_{n=1}^{\infty}b_{n}$
+also diverges.\\
+\textbf{Theorem 5 - Limit Comparison test:}\\
+Let $a_{n} \and b_{n}$ be positive sequences. Assume 
+$L=\lim\limits_{n\to\infty}\frac{a_{n}}{b_{n}}$ exists.
+\begin{itemize}
+\item{If $L>0 \mbox{ then } \sum a_{n}$ converges iff $\sum b_{n}$ converges}
+\item{If $L=\infty$ and $\sum a_{n}$ converges, then $\sum b_{n}$ converges}
+\item{if L=0 and $\sum b_{n}$ converges, then $\sum a_{n}$ converges}
+\end{itemize}
+\textbf{Alternating Series:} Series that alternate between + and - \\
+\textbf{Absolute Convergence:} The series $\sum a_{n}$ converges absolutely
+if $\sum |a_{n}|$ also converges.\\
+\textbf{Theorem - Absolute convergence implies convergence:} if $\sum |a_{n}|
+$ converges, then $\sum a_{n}$ also converges.\\
+\textbf{Theorem - Alternating Series test:} Assume that $b_{n}$ is a 
+positive dereasing sequence converging to 0.\\
+$b_1>b_2>b_3>\dots>0~~\lim\limits_{}$\\
+Thus, $S=\sum_{n=1}^{\infty}(-1)^{n-1}b_{n}=b_1-b_2+b_3\dots$\\
+Furthermore: $0<S<b_1$ and $S_{2N}<S<S_{2N+1},~N\geq 1$\\
+\textbf{Conditional Convergence:} an infinite series $\sum a_{n}$
+converges conditionally if $\sum a_{n}$ converges but $\sum |a_{n}|$
+diverges.\\
+\textbf{Theorem:} let $S=\sum_{n=1}^{\infty}(-1)^{n-1}b_{n} \mbox{where} b_{n}$ is a positive decreasing sequence that converges to 0. Then:
+\begin{equation} 
+|S-S_{N}|<b_{N+1}
+\end{equation}
+\textbf{Ratio test:} Assume that the following limit exists:
+\begin{equation}
+p=\lim\limits_{n\to\infty}|\frac{a_{n+1}}{a_{n}}|
+\end{equation}
+\begin{itemize}
+\item{if p<1, then $\sum a_{n}$ converges absolutely}
+\item{if p>1, then $\sum a_{n}$ diverges}
+\item{if p=1, the test is inconclusive (one or the other}
+\end{itemize}
+\textbf{Root Test}: Assume the following limit exists:
+\begin{equation} 
+L=\lim\limits_{n\to\infty}\sqrt[n]{|a_{n}|}
+\end{equation}
+\begin{itemize}
+\item{if L<1, $\sum a_{n}$ converges absolutely}
+\item{if L>1 $\sum a_{n}$ diverges}
+\item{if L=1, inconclusive}
+
+\end{itemize}
+
+\end{section}
+\begin{section}{Day 4 - Power series}	
+Basic geometric series with $r<1$: 
+\begin{equation}
+\sum_{k=0}^{\infty}r^{k}=r^{0}+r^{1}+r^{2}+\dots=\frac{1}{1-r}
+\end{equation}
+Basic geometric series replaced with variable x, where $|x|<1$.
+\begin{equation}
+\sum_{k=0}^{\infty}x^{k}=x^{0}+x^{1}+x^{2}+\dots=\frac{1}{1-x}
+\end{equation}
+\textbf{Power Series Form:}
+\begin{equation} 
+\sum_{k=0}^{\infty}c_{k}(x-a)^{k}
+\end{equation}
+$c_{k}$ are the coefficients of the power series.\\
+\textbf{a} is the center of the power series.\\
+The set of values for which \textbf{x} converges is the 
+\textbf{interval of convergence}\\
+\textbf{Radius of convergence:} denoted \textbf{R}, is the distance from the
+center of the series to the interval of convergance.
+
+\end{section}
+\begin{section}{Taylor and Maclaurin Series}
+\textbf{Taylor Polynomials:} The nth order Taylor polynomial of f centered at x=a is given by
+\begin{equation}
+	P_{n}(x)=f(a)+f'(a)(x-a)+\frac{f''(a)}{2!}(x-a)^{2}+\dots+\frac{f^{(n)}(a)}{n!}(x-a)^{n}
+\end{equation}
+This degree n polynomial approximates f(x) near x=a and has the property $P^{(k)}_{n}(a)=f^{(k)}(a)
+$ for k=0,1,...,n\\
+The Taylor series for f centered at x=a is the series 
+\begin{equation}
+	T_{f}(x)=\sum_{k=0}^{\infty}\frac{f^{(k)}(a)}{k!}(x-a)^{k}
+\end{equation}
+\end{section}
+\begin{section}{Polar, Cylindrical, and Spherical Coordinates}
+In Calc 1, integrals were generally $\int_{a}^{b}f(x)dx$ - calculated area under a curve.\\
+In that same vein, we mostly used Cartesian coordinate systems to map points as ordered pairs.
+\begin{subsection}{Polar Coordinates}
+In general, to convert between Cartesian and Polar, follow these rules
+\begin{itemize}
+\item{$x=r*cos\theta$}
+\item{$y=r*sin\theta$}
+\item{$r^{2}=x^{2}+y^{2}$}
+\item{$tan\theta = \frac{y}{x}$}
+\end{itemize}
+Polar coordinate graphing is thus in the form
+\begin{equation}
+r=f(\theta)
+\end{equation}
+Shapes like cardioids and other limacons can be graphed
+\end{subsection}
+\begin{subsection}{Cylindrical and Spherical}
+\textbf{Cylindrical:} The same equations for polar coordinates are satisfied, except with an additional Z coordinate.
+\textbf{Spherical:} A point P in space is represented by $(\rho ,\theta, \phi)$
+\begin{itemize}
+\item{$\rho$ is the distance between P and origin ($\rho\neq 0$)}
+\item{$\theta$ is the same as in polar and cylindrical}
+\item{$\phi$ is the angle formed by the positive z-axis and the line segment OP, where O is 
+the origin and $0\leq\phi\neq\pi$}
+\end{itemize}
+\textbf{Converting between spherical and rectangular systems:}
+\begin{itemize}
+\item{$x=\rho sin\phi cos\theta$}
+\item{$y=\rho sin \phi sin \theta$}
+\item{$z=\rho cos\phi$}
+\item{$p^{2}=x^{2}+y^{2}+z^{2}$}
+\item{$tan\theta = \frac{y}{x}$}
+\item{$\phi = arccos \frac{z}{\sqrt{x^{2}+y^{2}+z^{2}}}$}
+\end{itemize}
+\textbf{Converting between spherical and cylindrical}
+\begin{itemize}
+\item{$r=\rho sin\phi$}
+\item{$\theta = \theta$}
+\item{$z=\rho cos \phi$}
+\item{$\rho=\sqrt{r^{2}+z^{2}}$}
+\item{$\phi = arccos \frac{z}{\sqrt{x^{2}+r^{2}}}$}
+\end{itemize}
+\end{subsection}
+\end{section}
+\begin{section}{Vector Calculus}
+\textbf{Vector valued function:} \textbf{r}(t)=f(t)\textbf{i}+g(t)\textbf{j} or 
+\textbf{r}(t)=f(t)\textbf{i}+g(t)\textbf{j}+h(t)\textbf{k}\\
+The \textbf{Component Functions} of f,g,h are real-valued functions parameterized by t.\\
+\textbf{Initial point:} beginning, tail, of the vector.\\
+\textbf{Terminal point:} End of the vector.\\
+\textbf{Standard Position:} Starting at the origin
+\begin{equation}
+	\hat{v}=<x_1-x_0,y_1-y_0>
+\end{equation}
+\textbf{Plane Curve}: The path of an i and j vector valued function\\
+\textbf{Space Curve:} The path of and i, j, k, vector valued function.\\
+\textbf{Vector Parameterization:} Any representation of curve using vector valued functions
+\begin{equation}
+\lim\limits_{t\to a}\textbf{r}(t)=[\lim\limits_{t\to a}\textbf{f}(t)]i+
+[\lim\limits_{t\to a}\textbf{r}(t)]j
+\end{equation}
+\textbf{Derivatives of Vector value functions:}
+\begin{equation}
+\textbf{r}'(t)=\lim\limits_{\delta t\to 0}\frac{\textbf{r}(t+\delta t)-\textbf{r}(t)}{\delta t}
+\end{equation}
+\begin{equation}
+\mbox{if} \textbf{r}(t)=f(t)\textbf{i}+g(t)\textbf{j} \mbox{then}
+\textbf{r}'(t)=f'(t)\textbf{i}+g'(t)\textbf{j}
+\end{equation}
+\end{section}
+\begin{section}{Arc Length \& Curvature, Motion in Space}
+\begin{subsection}{Arcs}
+If you have a vector and want the length of the curved line from $t_1 \to t_2$:
+\begin{equation} \label{}
+s= \int_{t_1}^{t_2}\sqrt{(x'(t))^{2}+(y'(t))^{2}}dt
+\end{equation}
+Given a smooth curve C defined by the function \textbf{r}(t)=f(t)\textbf{i}+g(t)\textbf{j}:\\
+\begin{equation} \label{}
+s= \int_{a}^{b}\sqrt{(g'(t))^{2}+(f'(t))^{2}}dt
+\end{equation}
+\textbf{Arc-Length Parameterization:}\\
+Vector valued function: Represents position of a particle in space as a function of time.\\
+Arc-Length function: Measures how far the particle travels as a function of time. e.g.
+\begin{equation} 
+	s=\int_{a}^{t}\sqrt{(f'(u))^{2}+(g'(u))^{2}+(h'(u))^{2}}du
+\end{equation}
+\begin{equation} 
+	s(t)=\int_{a}^{t}||\vec{r}'(u)||du
+\end{equation}
+\begin{equation} 
+	\mbox{Speed: }s'(t)=||\vec{r}'(t)||
+\end{equation}
+Curvature is a way to measure how sharply a smooth curve turns. The sharper the curve, the
+smaller the radius of the inscribed circle.\\
+\begin{equation} 
+	\kappa = ||\frac{d\textbf{T}}{ds}||=||\textbf{T}'(s)||
+\end{equation}
+\begin{equation}
+	\kappa = \frac{||\textbf{T}'(t)||}{||\textbf{r}'(t)||}
+\end{equation}
+\begin{equation}
+	\kappa =\frac{||\textbf{r}'(t)x\textbf{r}''(t)||}{||\textbf{r}'(t)||^{3}}
+\end{equation}
+\begin{equation} 
+	\kappa=\frac{|y''|}{\left[1+(y')^{2}\right]^{3/2}}
+\end{equation}
+Let C be a 3-d smooth curve represented by \textbf{r} over an open interval I. If
+$\textbf{T}'(t) \neq 0$, the the principal unit normal vector at t is defined to be
+\begin{equation} 
+	N(t)=\frac{\vec{\textbf{T}}'(t)}{||\vec{\textbf{T}}'(t)||}
+\end{equation}
+The binormal vector is defined at t to be:
+\begin{equation} 
+	\textbf{B}(t)=\vec{\textbf{T}}(t) x \vec{\textbf{N}}(t)
+\end{equation}
+Position is VVF in regards to t\\
+Velocity is first derivative of a VVF\\
+Acceleration is second derivative of VVF\\
+\textbf{The Plane of the Acceleration Vector}: The Acceleration vector a(t) of an object moving
+along a curve traces out by a twice differentiable function r(t) lies in the plane formed by
+the unit tangent vector \textbf{T}(t) and the principal unit Normal vector \textbf{N}(t) to C
+\begin{equation} 
+\textbf{a}(t)=v'(t)\cdot \textbf{T}'(t)+\left[v(t)\right]^{2}\cdot\kappa\cdot\textbf{N}(t)
+\end{equation}
+Here v(t) is the speed of the object and $\kappa$ is the curvature of C traced out by 
+\textbf{r}(t).\\
+\textbf{Projectile Motion:} $\textbf{F}=m\textbf{a} ~\to~a=-g\hat{\textbf{j}}$\\
+Velocity: $\textbf{v}=-gt\hat{\textbf{j}}+\textbf{v}_{0}$ \\
+Position: $\textbf{s}(t)=-\frac{1}{2}gt^{2}\hat{\textbf{j}}+\textbf{v}_{0}t+\textbf{s}_{0}$\\
+\begin{equation} 
+	\textbf{s}(t)=\left<v_0tcos\theta,v_0tsin\theta-\frac{1}{2}gt^{2}\right>
+\end{equation}
+\end{subsection}
+\end{section}
+\begin{section}{Double integrals - Rectangular and General}
+\begin{subsection}{Double integrals over rectangular regions}
+\textbf{Fubinis Theorem:} In a rectangular region, you can integrate 
+iteritavely either x,y or y,x \\
+\textbf{Average Value:} $avg=\frac{1}{\mbox{Area of R}}*\int\int f(x,y)dA$
+\end{subsection}
+\end{section}
+\begin{section}{Double integrals in polar coordinates, triple integrals}
+Area of a slice of circle w/ radius \textbf{r}: $\frac{1}{2}r^{2}\Delta\theta$ \\
+\begin{equation}
+r_{ij}\cdot\Delta r\cdot\Delta\theta
+\end{equation}
+\begin{equation} 
+\int_{\alpha}^{\beta}\int_{a}^{b}f(r,\theta\cdot drd\theta
+\end{equation}
+
+\end{section}
+\begin{section}{Triple integrals in spherical and cylindrical}
+For Cylindrical:
+\begin{equation}
+\int_{c}^{d}\int_{\alpha}^{\beta}\int_{a}^{b}f(r,\theta,z)rdrd\theta dz
+\end{equation}
+For Spherical:
+\begin{equation} 
+\int_{\theta=\alpha}^{\theta=\beta}\int_{\phi=\psi}^{\phi=\gamma}
+\int_{\rho=a}^{\rho=b}f(\rho,\theta,\phi)\rho^{2}sin(\phi)d\rho d\phi 
+d\theta
+\end{equation}
+\end{section}
+\begin{section}{Vector Fields}
+A vector field in $\mathbb{R}^{2}$ F, is an assignment of a 
+two-dimensional vector \textbf{F}(x,y) to each point (x,y) of a subset D of $\mathbb{R}^{2}$. The subset D is the domain of the vector field.\\
+The same applies in more dimensions.\\
+\textbf{Radial Field}: All point to or from the origin. Magnitude
+dependent on distance.\\
+\textbf{Rotational Field} The vector is tangent to a circle with radius
+$r=\sqrt{x^{2}+y^{2}}$. Generally all clock or counter clockwise.\\
+\textbf{Unit vector field:} All vectors have magnitude 1. Direction is 
+the only relevant aspect.\\
+\textbf{Normalizing a field}:
+Given $\vec{F}=\langle P,Q,R\rangle$
+\begin{equation} \label{Unit vector field}
+\frac{\vec{F}}{||F||}=\langle \frac{P}{||F||},\frac{Q}{||F||},
+\frac{R}{||F||}\rangle
+\end{equation}
+\textbf{Gradient Fields:} If f is a scalar function of x and y, gradient
+is $gradf=\nabla f$\\
+A vector field \textbf{F} $\in \mathbb{R}^{2} or \mathbb{R}^{3}$ is a 
+\textbf{gradient field} or a \textbf{conservative vector field} if there 
+exists a scalar function f such that $\nabla f=\textbf{F}$\\
+\textbf{Uniqueness}: Gradients f and g that are potential functions vary
+only by a constant.\\ 
+\textbf{Theorem: Cross-Partial property of Conservative Vector Fields}\\
+let F be a vector field in two or three dimensions such that the 
+component functions of \textbf{F} have continuous second-order 
+mixed-partial derivatives on the domain of \textbf{F}\\
+If $\textbf{F}(x,y)=\langle P(x,y),Q(x,y)\rangle$ is a conservative 
+vector field in $\mathbb{R}^{2}$, then:
+\begin{equation}
+	\frac{dP}{dy}=\frac{dQ}{dx}
+\end{equation}
+Similar holds true in $\mathbb{R}^{3}$
+
+
+\end{section}
+
+This can be used to show a field is conservative, not vice versa.
+\subsection{Vector Line Integral}
+the \textbf{Vector Line Integral} of a vector field $F$ along an oriented smooth curve $C$ is 
+\begin{equation}
+\int_{C}F \cdot T ds = F(r(t)) \cdot \frac{r'(t)}{||r'(t)||}\cdot ||r'(t)||dt
+\end{equation}
+\begin{equation}
+	\int_{C}=F\cdot Tds = \int_{a}^{b}F(r(t))\cdot r'(t)dr
+\end{equation}
+\begin{equation}
+\int_{C}F\cdot T ds = \int_{C}F\cdot dr	
+\end{equation}
+\textbf{Piecewise Smooth Function}
+a function made of a finite number of smooth curves
+\begin{equation}
+\sum_{m=1}^{n}	\int_{C_{m}}F\cdot ds
+\end{equation}
+\subsection{Flux}
+\begin{equation}
+\int_{C}F\cdot N ds	
+\end{equation}
+\begin{equation}
+\int_{C}F(r(t))\cdot n(t)dt	
+\end{equation}
+All these variables are vectors
+\begin{equation}
+n=<y',-x'>	
+\end{equation}
+\subsection{Circulation}
+Circulation of F along C: line integral of F along oriented \textbf{closed} curve
+\begin{equation}
+\oint_{C}F\cdot T ds	
+\end{equation}
+\begin{equation}
+\int F(r(t))\cdot r'(t)	
+\end{equation}
+\textbf{Simple Curves} do not cross themselves.
+
+A region D is a \textbf{connected region} for any two points if there is a path where the trace is entirely within D. A region is \textbf{simply connected} if you can shrink it to a straight line. If there is a hole/excepted area within the region it is not simply connected.
+
+\subsection{Fundamental Theorem for Line Integrals}
+C must be a piecewise smooth curve
+
+\begin{equation}
+	\label{}
+\int_{C}\nabla f \cdot dr = f(r(b))-f(r(a))	
+\end{equation}
+
+
+\textbf{Gradient fields} are \textbf{path independent}
+
+\begin{subsection}{parameterizing}
+You need to be able to parameterize a circle or a line segment.
+
+\end{subsection}
+\begin{section}{Green's Theorem}
+\begin{equation} 
+\int_{a}^{b}F'(x)dx=F(b)-F(a) \to \int_{C}\nabla f=f(r(b))-f(r(a))
+\end{equation}
+\textbf{Green's Theorem, Circulation form:} Let D be an open, simply connected region with a boundary curve C that is a piecewise smooth, simple closed curve oriented counterclockwise.
+Let \textbf{F}$=\langle P,Q\rangle$ be a vector field with component functions that have continuous partial derivatives on D. Then,
+\begin{equation} 
+\oint \textbf{F}\cdot d\textbf{r}=\oint Pdx+Qdy=\iint_{D}(Q_{x}-P_{y})dA
+\end{equation}
+If the field is conservative, the integral is 0.\\
+\textbf{Green's Theorem for Flux:} Same conditions as for circulation.
+\begin{equation}
+\oint_{C}\textbf{F}\cdot\textbf{N}ds=\iint_{D}(P_{x}+Q_{y})dA
+\end{equation}
+Remember: Conservative and source-free vector fields on simply-connected domain - any potential function satisfies Laplace's eqn. 
+$f_{xx}+f_{yy}=0$ any f is a harmonic function.\\
+\textbf{Green's Theorem over General Regions:} \\
+C is positively oriented. Region always on the left of the direction. If 
+negatively oriented, region is to the right.\\
+\end{section}
+\begin{section}{Divergence and Curl}
+\begin{equation}
+	DivF=P_{x}+Q_{y}+R_{z}=\nabla\cdot\vec{\textbf{F}}
+\end{equation}
+\textbf{Gradient Operator:}
+$\nabla=\langle\frac{d}{dx}\frac{d}{dy}\frac{d}{dz}\rangle$\\
+DivF=0 if: Magnetic field, iff source-free\\
+Source Free: $g_{y}=P\& g_{x}=-Q\\
+\begin{equation}*
+\mbox{curl\textbf{F}}=(R_{y}-Q_{z})\hat{i}+(P_{z}-R_{x})\hat{j}+
+(Q_{x}-P_{y})\hat{k}=\nabla \times \vec{\textbf{F}}
+\end{equation}
+
+\end{section}
+\end{document}

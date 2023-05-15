@@ -1,0 +1,529 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsmath, amssymb}
+\usepackage{pdfpages}
+\usepackage[left=25mm, right=25mm, top=20mm, bottom=20mm]{geometry}
+
+\pdfsuppresswarningpagegroup=1
+\title{MA313 Probability notes}
+\author{Reuben Alter}
+\date{}
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+
+\newpage
+
+\begin{section}{Chapter 1: Probability and Counting}
+\begin{subsection}{Intro}
+Mathematics is the logic of certainty, 
+\textbf{Probability} is the measure of uncertainty.\\
+\textbf{Experiment:}
+Any process that has an uncertain outcome. 
+e.g. flipping a coin twice, rolling a dice.\\
+\textbf{Sample Space (S):}
+The set of all possible outcomes of an experiment.\\
+\begin{itemize}
+\item{$\lbrace$ HH,HT,TH,TT $\rbrace$}
+\item{$\lbrace 1,2,3,4,5,6 \rbrace$}
+\end{itemize}
+\textbf{Event:} any subset of Sample Space, S
+\begin{itemize}
+\item{A= Number of outcomes have at least one Head}
+\item{B=Rolling an odd number}
+\end{itemize}
+\textbf{Mutually exclusive events (disjoint):}
+Events that cannot happen at the same time.
+\begin{itemize}
+\item{Heads + Tails from a single coin flip}
+\item{Odds + Evens from a single roll of a dice,}
+\end{itemize}
+\textbf{Exhaustive Events:} 
+When every element in \textbf{S} occurs in one of the events.
+When events are combined, sample space is re-obtained. \\
+The \textbf{Probability} of an outcome is the proportion of times the
+outcome would occur if we observed the random process an infinite number
+of times.\\
+\textbf{Properties of probabilities:}
+\begin{itemize}
+\item{All probs are $0\leq\mbox{prob}\leq 1$}
+\item{The sum of the prob of all outcomes must be 1}
+\end{itemize}
+\end{subsection}
+\begin{subsection}{Counting}
+If order matters/doesn't matter for probability in an outcome, 
+look at permutation / combination.\\
+Combination w/o replacement (Order Irrelevant):
+\begin{equation} 
+	\mbox{ nCr} \to \frac{n!}{r!(n-r)!} \to
+	{n \choose r}
+\end{equation}
+Permutation w/o replacement (Order Matters):
+\begin{equation} 
+	\mbox{ nPr} \to \frac{n!}{(n-r)!}
+\end{equation}
+Combination w/ replacement:
+\begin{equation} 
+	\frac{(r+n-1)!}{r!(n-1)!}
+\end{equation}
+Permutation w/ replacement:
+\begin{equation} 
+n^{k}
+\end{equation}
+
+\end{subsection}
+\begin{subsection}{Story proofs}
+
+\begin{equation} 
+	{n \choose k} = {n \choose n-k} \to \frac{n!}{k!(n-k)!}=
+	\frac{n!}{(n-k)!(n-n-k)!}
+\end{equation}
+\begin{equation} 
+	{m+n \choose k}=\sum_{j=0}^{k}{m \choose j}{n \choose k-j}
+\end{equation}
+\end{subsection}
+\begin{subsection}{And, Or, Not}
+$P(A\cap B)$ is the intersection of A and B.\\
+$P(A\cup B)$ is the union of A and B (OR). 
+$P(A\cup B)=P(B)+P(A)-P(B\cap A)$\\
+P(A')=1-P(A). This is the Complement.\\
+\textbf{De Morgan's Law}: $P(A\cup B) = P(A' \cap B')$
+\end{subsection}
+\end{section}
+\begin{section}{Conditional Probability}
+\begin{equation} 
+P(S|B) = \frac{P(S\cap B)}{P(B)} \to \mbox{generally, } P(S|B)\neq P(B|S)
+\end{equation}
+Generality about condition. $P(A|B) + P(A'|B) = 1$. Event (B) must still match.\\
+$P(A|B)=\frac{P(A\cap B)}{P(A)}$\\
+$P(A\cap B)=P(B|A)P(A)$
+\begin{equation} 
+\mbox{\textbf{Bayes Theorem (the chill one assuming P(B):  }}
+P(A|B)=\frac{P(B|A)P(A)}{P(B)}
+\end{equation}
+P(A): Prior\\
+$P(A|B)$: Posterior\\
+\textbf{Actual Bayes Theorem}
+\begin{equation} 
+	P(A|B)=\frac{P(B|A)P(A)}{P(B|A)P(A)+P(B|A')P(A')}
+\end{equation}
+\textbf{Repartitioning Bayes Theorem for Multivariates:}
+\begin{equation} 
+	P(A|B)=\frac{P(B|A)P(A)}{\sum_{1}^{i}P(B|A_{i}P(A_{i})}
+\end{equation}
+Two processes are \textbf{independent} if knowing the outcome of one provides
+no useful information about the outcome of the other.\\
+e.g. A=Coin landing H on first flip, B=Coin landing H on second flip.\\
+If independent, $P(B|A)=P(B)=\frac{P(A\cap B)}{P(A)}$\\
+Mutual exclusivity and independence are impossible on the same set.\\
+If something is mutually exclusive, it can't be independent.\\
+For More than two variables:\\
+\begin{equation} 
+P(A\cap B\cap C)=P(A)P(B)P(C)
+\end{equation}
+For this, Pairwise Independence doesn't mean total independence.\\
+\textbf{Birthday Problem:}
+\begin{equation} 
+1-\frac{365!}{365^{n}(365-n)!}=1-\frac{n!{365 \choose n}}{n}
+\end{equation}
+\textbf{Chain Rule of Probability:}
+\begin{equation} 
+P(A\cap B\cap C)=P(A|D)P(D)=P(A|B\cap C)P(B\cap C)=P(A|B,C)P(P|C)P(C) \to
+D=B\cap C
+\end{equation}
+\textbf{General Case}
+\begin{equation} 
+P(A_1\cap A_2\dots A_{n})=P(A_1)P(A_2|A_1)P(A_3|A_2A_1)\dots P(A_{n}|A_{n-1}\dots A_1)
+\end{equation}
+Intersections and Unions of multiple variables.
+\begin{equation} 
+P(A\cup B\cup C\cup)=P(A)+P(B)+P(C)-P(A\cap C)-P(A\cap B)-P(B\cap C)+
+P(A\cap B\cap C)
+\end{equation}
+\begin{equation} 
+P((A\cup B)|C)=P(A|C)+P(B|C)-P(A\cap B|C)
+\end{equation}
+
+\end{section}
+\begin{section}{Chapter 3: Random Variables, Distributions}
+\textbf{Types of Variables:}\\
+Qualitative: Nominal, Ordinal \\
+Quantitative: Discrete, Continuous \\
+A \textbf{Random Variable} is a useful concept that simplifies notation and expands our ability to quantify uncertainty and summarize the results of experiments.\\
+\textbf{Definition:} Given an experiment with sample space S, a random variable is a function from the sample space S to the real numbers $\mathbb{R}$\\
+Redefining in terms of Random Vars.\\
+Example: What is the prob. that a coin lands on heads twice in 2 flips\\
+\begin{equation} 
+	x=\mbox{Number of H's}~~~~~ P(X=2)
+\end{equation}
+This can create a PMF, or Probability Mass Function, where you 
+calculate P(x=k)\\
+\textbf{CDF} is a cumulative Distribution Function, calculating
+$P(x\leq k)$.\\
+\textbf{PMF} is generally notated f(x) whereas \textbf{CDF} is
+generally notated as F(x)\\
+\begin{subsection}{Bernoulli and Binomial Distributions}
+e.g. on a quiz, two T/F questions. X=number of questions guessed right\\
+\indent Possible outcomes $\lbrace CC,CI,IC,II\rbrace$\\
+\indent $P(x=0)=1/4,~P(x=1)=1/2,~P(X=2)=1/4$\\
+\indent What if there are 100? $2^{100}$ possibilities.\\
+\textbf{PMF of Binomial Distribution}:
+\begin{equation} 
+P(x=k)={n \choose k}p^{k}q^{n-k} \to q=(1-p)
+\end{equation}
+The ${n \choose k}$ is the binomial coefficient.\\
+Conditions for Binomial:
+\begin{enumerate}
+\item{Fixed n}
+\item{Constant p. (Probability of success)}it	
+\item{Two possible outcomes for each trial}
+\item{Counting number of successes}
+\end{enumerate}
+e.g. 5 m.c. Questions options a-d\\
+\indent n=5, p=.25, q=.75\\
+\indent $P(x=3)={5 \choose 3}\frac{1}{4}^{3}\frac{3}{4}^{2}$\\
+If X is following the binomial distributions, X is following n and p. $X-Bin(n,P)$\\
+For binomial Y-Bern(p)\\
+Each trial of a binomial distribution is a Bernoulli.\\
+X-Bin(1,p)=Bern(p)
+In R use \textbf{dbinom} function for PMF function\\
+In R use \textbf{pbinom} for CDF function.\\
+\end{subsection}
+\begin{subsection}{Hypergeometric}
+\textbf{Hypergeometric Distribution:} When sampling without replacement and the probability of success is changing.\\
+\indent Formula of PMF Hypergeometric Distribution:\\
+\indent \textbf{m} is possible successes, \textbf{N} is the population size, \textbf{n} is the sample size.
+\begin{equation} 
+P(x=k)=\frac{{w \choose k}{b \choose n-k}}{{w+b \choose n}}=
+\frac{{m \choose k}{N-m \choose n-k}}{{N \choose n}}
+\end{equation}
+In hypergeometric distributions, there are two sets of tags:\\
+\begin{itemize}
+\item{Success or Not Success}
+\item{Sampled or Not Sampled}
+\end{itemize}
+\end{subsection}
+\begin{subsection}{Discrete Uniform}
+e.g. Imagine rolling a 6 sided die. X-DUnif(1,6)\\
+If you have a constant probability with a random outcome, it is Discrete and Uniform.\\
+X-Dunif(C), where C is a set of numbers or, X-DUnif(a,b)
+\begin{equation} 
+P(X=k)=\frac{1}{b-a+1}
+\end{equation}
+\end{subsection}
+\begin{subsection}{Random Walk}
+\textbf{Random Walk} simple example: A particle moves n steps on a number line. The particles starts at 0, and each step it moves 1 unit to the right or left with equal probability. Assume all steps are independent. Let Y be the particle's position after n steps. What is the PMF of Y?\\
+Follows Pascals Triangle over $2^{n}$. \\
+$P(Y=k)=P(X=\frac{n+k}{2}={n \choose 2r-n}\frac{1}{2}^{n}$
+\end{subsection}
+\begin{subsection}{Independence and Identically distributed}
+X and Y are ind. if they don't provide useful info about each other.\\
+X and Y are identically distrbuted if they have the same PMF/CDF.\\
+If $X_{i}$ are iid and Bern(P), and $X=X_1+X_2+X_3+\dots+X_{n}$, then X-Bin(n,p)\\
+If X-Bin(n,p) and Y-Bin(m,p), then X+Y-Bin(n+m,p)
+\end{subsection}
+\begin{subsection}{HGeom with disease example}
+n women, m men, $X-Bin(n,p_1)$, $Y-Bin(m,p_2)$, null is $p_1=p_2$, r is total disease. 
+\begin{equation} 
+	P(X=k|X+Y=r)=\frac{P(X+Y=r)P(X=k)}{P(X+Y=r)}=\frac{P(Y=r-kP(x=k)}{P(X+Y=r}=\frac{{m \choose r-k}p^{r-k}q^{m+k-r}{n \choose k}p^{k}q^{n-k}}{{n+m \choose r}p^{r}q^{n+m-r}}=\frac{{m \choose r-k}{n \choose k}}{{n+m \choose k}}
+\end{equation}
+From this, if X-Bin(n,p) and Y-Bin(m,p) and X is independent of Y, then the cond. dist. of X given X+Y=r follows HGeom(n,m,r).\\
+If X-HGeom(w,b,n) and $N=w+b\to\infty$ such that $p=\frac{w}{w+b}$ remains fixed, then the PMF of X converges to Bin(n,$\frac{w}{w+b}$)
+\end{subsection}
+\end{section}
+\begin{section}{Chapter 4: Expectation}
+\begin{equation} 
+E(x)=\sum_{i=1}^{\infty}x_{i}P(X=x_{i})
+\end{equation}
+If X and Y are identically distributed, E(X+Y)=2E(X).\\
+For and RV's, X+Y, and const. c \\
+\indent E(cX)=cE(X)\\
+\indent	E(X+Y)=E(X)+E(Y)\\
+E(X) of Binomial distribution, X-Bin(n,p) = np
+\begin{subsection}{Geometric and Negative Binomials}
+\textbf{Geometric Distro.}\\
+Ex. Suppose minho flips a coin until it lands on H for the first time. Let X be the number of tails until the first H.\\
+\indent X-Geom(p). Ind Bernoulli trials until the first success.\\
+PMF for X, where X-Geom(p) is $P(X=k)=q^{k}p$\\
+The CDF is $p\sum_{i=0}^{k}q^{k}$=$p\frac{1-q^{k+1}}{1-q}$
+=$1-q^{k+1}$\\
+\textbf{First Success Distro}\\
+Let Y be number of trials, including first success, then Y
+follows first success distribution. Y-FS(p)\\
+PMF: P(Y=k)=$q^{k-1}p$\\
+CDF: $P(Y\leq k)=1-q^{k}$\\
+Y-1-Geom(p)$\to$ X+1-FS(p)\\
+\textbf{Expectation of Geometric}:
+\begin{equation} 
+E(x)=\sum_{k=0}^{\infty}kq^{k}p=\frac{q}{p}
+\end{equation}
+\textbf{Expectation of FS}:
+\begin{equation} 
+E(Y)=\sum k P(Y=k)=\frac{1}{p}
+\end{equation}
+
+\end{subsection}
+\begin{subsection}{Negative Binomial}
+If we repeat Bernoulli trials until we get rth success, then we have a negative binomial distribution.\\
+X=number of failures before the rth success.\\
+X-NBin(r,p)\\
+The PMF: P(X=k)=${k+r-1 \choose r-1}p^{r}q^{k}$\\
+The sum of iid Bern. is Bin. Likewise, the sum of iid 
+Geometric trials is NBin.\\
+E(X)=$r\frac{q}{p}$
+\end{subsection}
+\begin{subsection}{Negative Hypergeometric}
+Y-NHGeom(w,b,r)\\
+\begin{equation} 
+P(Y=k)=\frac{{w \choose r-1}{b \choose k}}{{w+b \choose r+k-1}}*\frac{w-r+1}{w+b-r-k+1}
+\end{equation}
+This can be rewritten as N=w+b, K=b, num success:
+\begin{equation} 
+P(Y=k)=\frac{{K \choose k}{N-K \choose r-1}}{{N \choose k+r-1}}*\frac{N-K-r+1}{N-r-k+1}=
+\frac{{k+r-1 \choose k}{N-r-k \choose N-k}}{{N \choose K}}
+\end{equation}
+\begin{itemize}
+\item{Fixed trials with rep. is Binomial}
+\item{Fixed trials w/o rep is HGeom}
+\item{Fixed num. success with rep. is Negative Binomial}
+\item{Fixed num. success w/o replace is Negative Hypergeometric}
+\end{itemize}
+\end{subsection}
+\begin{subsection}{Law Of The Unconcious Statistician (LOTUS}
+Suppose a wealthy stranger offers to play a game. You will flip a fair coin until it lands on H's forthe first time and you will receive $\$2^{n}$, where n is the number of rounds you play. What is the expected payoff? 
+The payoff is unlimited but the number of rounds we expectto play is 2. monetary E(X)=$\infty$. Round E(X)=2 \\
+The point of this is to illuminate that $E(g(x))\neq g(E(x)$. There is danger with confusing the the two when g is non-linear.\\
+\textbf{LOTUS Theorem:} If X is a discrete rv and g is a function from $\mathbb{R}$ to $\mathbb{R}$, then
+\begin{equation} 
+E(g(X))=\sum g(X)P(X=k)
+\end{equation}
+We don't need to know the PMF of g(k) ot find E(g(X)) but only need the PMF of X and g(k)
+\end{subsection}
+\begin{subsection}{Variance}
+\begin{equation} 
+Var(X)=E[(X-E(X))^{2}]=E(X^{2})-[E(X)]^{2} 
+\end{equation}
+\begin{equation} 
+SD(X)=\sqrt{Var(X)}
+\end{equation}
+\begin{equation} 
+	Var(X+c)=Var(X)\to Var(cX)=c^{2}Var(X)\to Var(X+Y)=Var(X)+Var(Y)
+\end{equation}
+Var(X+Y) only works if X+Y are independent\\
+Var(X) if X is binomial is \textbf{npq}
+\end{subsection}
+\begin{subsection}{Poisson Distribution}
+The Poisson distribution is often used in situations where we are counting the number of successes in a particular region or interval of time.\\
+Large numbers of trials, each with a small probability of success.\\
+X-Pois(X)\\
+E(X)=$\lambda$\\
+Var(X)=$\lambda$\\
+$\lambda$ is the rate of occurrence of these rare events.\\
+\begin{equation} 
+P(X=k)=\frac{e^{-\lambda}\lambda^{k}}{k!}=e^{-\lambda}\sum_{k=0}^{\infty}\frac{\lambda^{k}}{k!}
+\end{equation}
+Example: Generally 1 accident on I-70 per day. X-Pois(1), 
+E(X)=1.\\
+If X and Y are independent , X+Y-Pois($\lambda_1$+$\lambda_2$\\
+\begin{equation} 
+P(X+Y=k)=\sum_{j=0}^{k}P(X+Y=k|X=j)(P(X=j)\to\sum P(Y=k-j)P(X=j)
+\end{equation}
+\begin{equation} 
+\to\sum\frac{e^{-\lambda_2}\lambda_2^{k-j}}{(k-j)!}*\frac{e^{-\lambda_1}\lambda_1^{j}}{j!}\to\frac{e^{-(\lambda_1+\lambda_2}}{k!}\sum{k \choose j}\lambda_1^{j}\lambda_2^{k-j}\to\frac{e^{-(\lambda_1+\lambda_2}(\lambda_1+\lambda_2)^{k}}{k!}
+\end{equation}
+\textbf{Binomial Expansion}: $(x+y)^{n}=\sum{n \choose k}x^{n}y^{n-k}$\\
+Generally, Poisson and Binomial can represent each other depending on how the problem is represented. Keep that in mind.\\
+For X-Bin(n,p), $\lambda$=np is fixed, n$\to\infty,~p\to 0$
+\begin{equation} 
+P(X=k)={n \choose k}p^{k}q^{n-k}=
+\frac{n(n-1)\dots(n-k+1)}{k!}\frac{\lambda}{n}^{k}(1-\frac{\lambda}{n})^{n}(1-\frac{\lambda}{n}^{-k})
+\end{equation}
+\begin{equation} 
+=\frac{\lambda^{k}}{k!}\frac{n(n-1)\dots(n-k+1)}{n^{k}}(1-\frac{\lambda}{n})^{n}(1-\frac{\lambda}{n})^{-k}=\frac{\lambda^{k}e^{-\lambda}}{k!}
+\end{equation}
+From this, If X-Bin(n,p) and we let n$\to\infty,~p\to\infty$ such that $\lambda$=np remains fixed, then the PMF of X converges to the Pois($\lambda$)PMF.\\
+More generally, the same conclusion holds if $n\to\infty$ and $p\to 0$ in such a way that np converges to a constant $\lambda$.\\
+\end{subsection}
+\end{section}
+\begin{section}{Chapter 5: Continuous Random Variables}
+Discrete values no longer have probabilities. In a continuous setting, P(X=a)=0. \\
+Additionally, $P(X<a)=P(X\leq a)$. \\
+Essentially, only CDF's exist, so F(X)=$\int f(x)dx$\\
+$\int f(x)dx$ is the \textbf{PDF} or Probability Density function.\\
+\textbf{Theorem:} Let X be a continuous R.V. with PDF f. The CDF of X is given by 
+\begin{equation} 
+F(X)=\int_{-\infty}^{x}f(t)dt=F(x)-F(-\infty)=F(x)
+\end{equation}
+Because we are still working with probabilities, the area under the whole curve is equal to 1.\\
+The PDF of a cont. R.V. must satisfy the following two criteria.
+\begin{itemize}
+\item{Nonnegative: $f(x)\geq 0$}
+\item{Integrates to 1: $\int_{-\infty}^{\infty}f(t)dt=1$}
+\end{itemize}
+\textbf{Expected Value:} E(x)=$\int xf(x)dx$, $E(x^{2})=\int x^{2}f(x)dx$
+\begin{subsection}{Uniform Distribution}
+X-Unif(a,b)\\
+PDF:f(x)=$\frac{1}{b-a}$\\
+There are finite bounds to the range and the probability is constant\\
+CDF is F(x)=$\frac{x-a}{b-a}$\\
+E(x)=$\int_{a}^{b}x*\frac{1}{b-a}dx=\frac{b+a}{2}$\\
+Var(x)=$\frac{b^{2}+ab+a^{2}}{3}-\frac{b^{2}+2ab+a^{2}}{4}=\frac{(b-a)^{2}}{12}$
+The Median always has P=0.5 on either side of it.
+\end{subsection}
+\begin{subsection}{Normal Distribution}
+Symmetric from $-\infty,\infty$\\
+\begin{equation} 
+\mbox{PDF:  } f(x)=\frac{1}{\sqrt{s\pi\sigma^{2}}}e^{-\frac{(x-\mu)^{2}}{s\sigma^{2}}}
+\end{equation}
+X-N($\mu,\sigma^{2}$)\\
+E(X)=$\mu\to$ Location Parameter\\
+Var(X)=$\sigma^{2}\to$ Shape Parameter and SD\\
+The \textbf{Standard Normal Distribution} has Z-N(0,1) with 68\% in the first standard deviation from 0, 95\% in 2, and 99.7\% in 3.
+Any normal dist. can be turned into a std. norm. dist.\\
+\begin{equation} 
+\mbox{Std. norm to norm transform: } Z=\frac{x-\mu}{\sigma} \to X=Z\sigma+\mu
+\end{equation}
+\begin{equation} 
+E(X)=E(\sigma Z+\mu)=E(\sigma Z)+E(\mu)=\mu
+\end{equation}
+\begin{equation} 
+Var(X)=Var(\sigma Z+\mu)=Var(\sigma Z)+Var(\mu)=\sigma^{2}
+\end{equation}
+\begin{equation} 
+\mbox{PDF: }\frac{1}{\sqrt{2\pi}}e^{-\frac{z^{2}}{2}}
+\end{equation}
+\end{subsection}
+\begin{subsection}{Exponential Distribution}
+Waiting for a success in continuous time.\\
+Success arrives at a rate of $\lambda$ success per unit of time\\
+A continuous R.V. is said to have the exponential distribution with parameter $\lambda$ where $\lambda>0$ if it's PDF follows $f(x)=\lambda e^{-\lambda x}, x>0$\\
+X-Exp($\lambda$)\\
+CDF: $\int_{0}^{x}\lambda e^{-\lambda x}=1-e^{-\lambda x}$\\
+E(X)=$\frac{1}{\lambda}$\\
+Var(X)=$\frac{1}{\lambda^{2}}$t\\
+$P(X\geq s+t|x\geq s)=\frac{P(X\geq s+t\cap x\geq s)}{P(X\geq s)}=P(X\geq t)$-Memoryless
+\end{subsection}
+\begin{subsection}{Poisson Process}
+There is a connection between exponential and Poisson distributions - parameterized on $\lambda$.\\
+For Y-Pois($\lambda$), Y represents the number of rare event successes. and for X-exp($\lambda$), X represents the RV, time. \\
+Poisson can be generalized to a $\lambda$t.\\
+\textbf{Definition Poisson Process:} A process of arrivals in continuous time is called
+a Poisson Process with a rate $\lambda$ if the following two conditions are met.\\
+1. The number of arrivals (successes) that occur in an interval of length t is a (Pois($\lambda$t) random varaiable.\\
+2.The number of arrivals that occur in disjoint intervals are independent of each other.\\
+\textbf{EX:} How many emails will I get in an hour? How long will it take for the first email to arrive?\\
+The first question is a poisson distribution and the second is exponential.\\
+$T_1=$ time until the first email arrives. $T_1>t$ is the same as $N_{t}=0$. $T_{n}>t$ is the same as $N_{t}<n$\\
+\begin{equation} 
+Nt-Pois(\lambda t) \to P(T_1>t)=P(N_{t}=0)=\frac{e^{-\lambda t}(\lambda t)^{k}}{k!}
+\end{equation}
+\begin{equation} 
+P(T_1>t=1-P(T_1\leq t)=e^{-\lambda t} \to \mbox{time-count duality}
+\end{equation}
+$T_1-Exp(\lambda)$~~~~~$T_2-T_1-Exp(\lambda)$
+\end{subsection}
+\end{section}
+\begin{section}{Moments}
+\begin{subsection}{Method of Moments}
+E(X) can be defined as the moment and, for a normal distribution, is $\mu$\\
+From this, Var(X)=$E[X-\mu]^{2}$ also known as a central moment\\
+Let X be a RV with mean $\mu$ and variance $\sigma ^{2}$. For any positive integer n, the nth moment of X is E($X^{n}$, the nth central moment is $E[(X-\mu)^{n}]$, and the nth standardized moment is $E[(\frac{X-\mu}{\sigma})^{n}]$ if it exists.\\
+The third standardized moment is called \textbf{Skewness}.\\
+If it is positive, right skewed, if negative, left skewed.\\
+The 4th std. moment is called kurtosis, "curved". kurt=$E[(\frac{X-\mu}{\sigma})^{4}]-3$. The -3 is because a normal distribution is kurt=3\\
+\end{subsection}
+\begin{subsection}{Moment Generating Function}
+\begin{enumerate}
+\item{MGF's are a generating function that encodes the moments of a distribution.}
+\item{Determines the PDF/PMF and CDF}
+\item{It's easy to find the distribution of sum of i.i.d. RVs}
+\end{enumerate}
+The MGF of a RV is M(T)=$E(e^{tx})$, as a function of t, if this is finite on some open interval (-a,a) containing 0. Otherwise, we say that the MGF doesn't exist.\\
+Given the MGF of X, we can get the nth moment by evaluating the nth derivative of the MGF at 0.
+\begin{equation} 
+E(X^{n})=M^{(n)}(0)
+\end{equation}
+For X-Bin(n,p): $E(e^{tx})=\sum_{k=0}^{n}e^{tk}{n \choose k}p^{k}q^{n-k}$=
+$\sum_{k=0}^{n}{n \choose k}(e^{t}p)^{k}q^{n-k}$=$(e^{t}p+q)^{n}$\\
+$\frac{d(M(t))}{dt}=npe^{t}(e^{t}p+q)^{n-1}$=$np(p+q)^{n-1}=np$\\
+If X and Y are independent, then the MGF of X+Y is the product of the individual MGF's. 
+\begin{equation} 
+	M_{X+Y}(t)=E[e^{t(X+Y)}]=E[e^{tX}e^{tY}]=M_{X}(t)M_{Y}(t)
+\end{equation}
+\end{subsection}
+\end{section}
+\begin{section}{Inequalities and Limit Theorem}
+\textbf{Markov Inequality:}For any non-negative RV X and positive constant a>0. $P(X>a)<\frac{E(X)}{a}$\\
+\textbf{Chebyshev's inequality} Let X have mean $\mu$ and variance $\sigma^{2}$. Then, for any a>0 $P(|X-\mu|\geq a)\leq\frac{\sigma^{2}}{a^{2}}$
+\begin{equation} 
+P((x-\mu)^{2}\geq a^{2})\leq\frac{E(x-\mu)^{2}}{a^{2}}=\frac{\sigma^{2}}{a^{2}}
+\end{equation}
+\textbf{Law of Large Numbers:} We assume i.i.d. $x_1,x_2,\dots$ with finite $\mu+\sigma^{2}$ For all positive integers n, let
+\begin{equation} 
+\bar{X}_{n}=\frac{x_1+x_2+\dots}{n} \to E(\bar{X}_{n})=E(X)\to Var(\bar{X}_{n})=\frac{\sigma^{2}}{n}
+\end{equation}
+The Law of Large Numbers (LLN) says that as n grows, the sample mean $\bar{X}_{n}$ converges to the true mean $\mu$\\
+\textbf{SLLN}: The sample mean converges to the true mean pointwise, with prob. 1. In short, $P(\bar{X}_{n}\to\mu)=1$\\
+\textbf{WLLN}: For all $\epsilon>0, P(|\bar{X}-\mu|>\epsilon)\to 0 \mbox{ as } n\to\infty$\\
+$P(|\bar{X}-\mu|>\epsilon)\leq\frac{\sigma^{2}}{\epsilon^{2}n}$\\
+\textbf{Central Limit Theorem}: Let $x_1,x_2,\dots$ be iid with $\mu$ and $\sigma^{2}$ CLT: as $n\to\infty$ 
+\begin{equation} 
+	\sqrt{n}(\frac{\bar{X}_{n}-\mu}{\sigma})\to N(0,1)
+\end{equation}
+For large n, the dist of $\bar{X}$-N($\mu,\frac{\sigma^{2}}{n}$)
+\end{section}
+\begin{section}{Joint Distributions}
+\begin{subsection}{Discrete Joint Dist.}
+The joint PMF of discrete RV's X and Y is the function
+\begin{equation} 
+f_{X,Y}(x,y)=P(X=x,Y=y)
+\end{equation}
+Just like the distribution of X has complete information of X, the joint dist. of X and Y has the complete information of X and Y. 
+\begin{equation} 
+\sum_{Y}\sum_{X}P(X=x,Y=y)=1
+\end{equation}
+To get from Joint distribution to Marginal distribution:
+\begin{equation} 
+P(X=x)=\sum_{Y}P(X=x,Y=y)
+\end{equation}
+Marginal CDF to Joint CDF: $F_{X}(x)=P(X\leq x)=\lim\limits_{y\to\infty}P(X\leq x, Y\leq y)$\\
+For discrete distributions, stay away from joint CDF.
+For discrete RV's X and Y, the conditional PMF of Y given X is
+\begin{equation} 
+P(Y=y|X=x)=\frac{P(X=x,Y=y)}{P(X=x)}=\frac{P(X=x|Y=y)P(Y=y)}{P(X=x)}=\frac{P(X=x|Y=y)P(Y=y)}{\sum_{Y}P(X=x|Y=y)P(Y=y)}
+\end{equation}
+To find the joint distribution of x variables in a multivariate joint distribution, sum over all variables you don't want.
+\end{subsection}
+\begin{subsection}{Continuous}
+$F_{X,Y}(x,y)=P(X\leq x, Y\leq y)$
+$f_{X,Y}(x,y)=\frac{d^{2}}{dxdy}F_{X,Y}(x,y)$
+A valid joint PDF should be nonnegative and integrate to 1
+\begin{equation} 
+f_{XY}(x,y)\geq 0\to \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f_{X,Y}(x,y)
+dxdy=1
+\end{equation}
+The joint PDF of two RV's is the function we integrate to get the probability of a two-dimensional region. For a general region A:
+\begin{equation} 
+P((X,Y)CA)-\iint_{A}f_{X,Y}(x,y)dxdy
+\end{equation}
+Marginal to Joint PDF: $f_{X}(x)=\int_{-\infty}^{\infty}f_{XY}(x,y)dy$ The bounds might change depending on Y's support.\\
+Conditional PDF: $f_{Y|X}(y|x)=\frac{f_{XY}(x,y)}{P(x)}=\frac{f_{X|Y}(x,y)f_{Y}(y)}{\int_{-\infty}^{\infty}f_{X|Y}(x|y)f_{Y}(y)dy}$
+\end{subsection}
+\begin{subsection}{Discrete and/or continuous}
+X Discrete, Y Discrete: $P(Y=y|X=x)=\frac{P(X=x|Y=y)P(Y=y)}{P(X=x)}$\\
+X Discrete, Y Continuous: $P(Y=y|X=x)=\frac{F_{x}(x|Y=y)P(Y=y)}{F_{X}(x)}$\\
+X Continuous, Y Discrete: $f_{Y}(y=X=x)=\frac{P(X=x|Y=y)f_{Y}(y)}{P(X=x)}$\\
+X Continuous, Y Continuous $f_{Y|X}(y|x)=\frac{f_{X|Y}(x|y)f_{Y}(y)}{f_{X}(x)}$\\
+\end{subsection}
+\begin{subsection}{2D LOTUS}
+E(g(x))=$\sum g(x)P(X=x)$\\
+E(g(x,y)=$\sum\sum g(x,y)P(X=x,Y=y)$ or $\iint g(x,y)f_{X,Y}(x,y)dxdy$\\
+Remember that iid functions together are multiplied not summed\\
+E(|X-Y|)=$\int_{0}^{1}\int_{0}^{1}|X-Y|dxdy$=$2*\int_{0}^{1}\int_{0}^{x}(x-y)dydx=\frac{1}{3}$
+\end{subsection}
+\end{section}
+\end{document}
